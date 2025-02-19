@@ -83,13 +83,10 @@
       // Firebase SDK 라이브러리 가져오기
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
       import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import {
-        collection,
-        addDoc,
-      } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import {collection,addDoc,} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
       import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-      // Firebase 구성 정보 설정
+      // Firebase 구성 정보 설정 나 만의 코드
       const firebaseConfig = {
         apiKey: "AIzaSyD1fTvwguVJ2IjLRme7AAmit8TtVvbXdeY",
         authDomain: "sparta-48af2.firebaseapp.com",
@@ -100,6 +97,11 @@
         measurementId: "G-6KC3GW1RRG"
       };
       
+      // Firebase 인스턴스 초기화
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+     
+      //클릭하기
       $("#postingbtn").click(async function () {
         let image = $("#image").val();
         let title = $("#title").val();
@@ -116,14 +118,11 @@
         alert('저장완료');
         window.location.reload(); //새로고침 
       });
+
       $("#savebtn").click(async function () {
         $("#postingbox").toggle();
       })
 
-      // Firebase 인스턴스 초기화
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-     
         let url =
           "http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99";
         fetch(url)
