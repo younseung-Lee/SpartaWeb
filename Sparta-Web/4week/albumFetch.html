@@ -132,7 +132,7 @@
             $("#msg").text(mise);
         });
 
-
+        //getDocs를 이용해서 카드룰 붙임임
          let docs = await getDocs(collection(db, "albums"));
               docs.forEach((doc) => {
             let row = doc.data();
